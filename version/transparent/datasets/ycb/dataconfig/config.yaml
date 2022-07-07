@@ -1,0 +1,23 @@
+train:
+  # Synthetic datasets with ground truth labels
+  datasetsTrain:
+    images: 'cleargrasp-dataset-train/*-train/rgb-imgs'
+    gt_normals: 'cleargrasp-dataset-train/*-train/camera-normals'
+    depth: 'cleargrasp-dataset-train/*-train/depth-imgs-rectified'
+    mask: 'cleargrasp-dataset-train/*-train/variant-masks'
+    json: 'cleargrasp-dataset-train/*-train/json-files'
+
+  # Synthetic datasets with ground truth labels - Used as test set
+  datasetsTestSynthetic:
+    images: 'cleargrasp-dataset-test-val/synthetic-val/*-val/rgb-imgs'
+    gt_normals: 'cleargrasp-dataset-test-val/synthetic-val/*-val/camera-normals'
+    depth: 'cleargrasp-dataset-test-val/synthetic-val/*-val/depth-imgs-rectified'
+    mask: 'cleargrasp-dataset-test-val/synthetic-val/*-val/variant-masks'
+    json: 'cleargrasp-dataset-test-val/synthetic-val/*-val/json-files'
+
+  axis:
+    cup-with-waves: 'Z'
+    flower-bath-bomb: 'XZ' # Y or XZ
+    heart-bath-bomb: 'XY'
+    square-plastic-bottle: 'Z'
+    stemless-plastic-champagne-glass: 'Z'
