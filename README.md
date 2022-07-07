@@ -13,33 +13,32 @@
 + 需要桌面进行支撑，在没有背景的情况下难以预测
 + 效果有待提升
 
-<img src=".\assert\01.png" style="zoom: 75%;" />
+<img src=".\assert\01.png" align="center" width="640" style="zoom: 75%;" />
 
 针对上面的问题我提出了一个新的模型
 
-<img src=".\assert\02.png" style="zoom:150%;" />
+<img src=".\assert\02.png" align="center" style="zoom:150%;" />
 
 与上面的不同，我们不再需要深度信息，而是只从单张RGB特征图中利用人为制作的表面法向量和深度特征（训练时）的约束来让网络具有丰富的几何特征学习能力。并且对于不同源的特征，参考PointNet我们采用了一种逐像素融合的融合方法，通过平均池化从特征中提取全局信息，并全局特征加入到每一个像素中去，这样我们就拥有语义丰富的三维几何特征，后面利用一个MLP网络从容和特征中回归出位姿。
 
 此外对于物体对称带来的旋转多解的情况，我们利用旋转矩阵的特性来对其进行约束。
 
-<img src=".\assert\04.png" style="zoom:50%;" />
+<img src=".\assert\04.png" width="640px" style="zoom:50%;" />
 
 
 
 > Sajjan S, Moore M, Pan M, et al. Clear grasp: 3d shape estimation of transparent objects for manipulation[C]//2020 IEEE International Conference on Robotics and Automation (ICRA). IEEE, 2020: 3634-3642.
 
 在Cleargrasp数据集中取得了不错的效果，其中heart、square、stemless都是具有轴对称的物体[结果](.\version\transparent\README.md)
-
-![](.\assert\05.png)
+<img src=".\assert\05.png" width="640px" align="center" style="zoom:30%;" />
 
 估计位姿的定性分析：
 
-![](.\assert\03.png)
+<img src=".\assert\03.png" width="960px" align="center" style="zoom:50%;" />
 
 ## 2. 当前正在研究—普通物体的位姿估计
 
-![](.\assert\10.png)
+<img src=".\assert\10.png" width="640px" align="center" style="zoom:50%;" />
 
 + 鲁棒特征提取：利用多分辨率特征提取网络HRNet来提取彩色特征，逐像素重建物体模型、预测表面法向量、掩码；
 + 密集多模态特征融合：将重建出物体模型、表面法向量等从RGB图像中得到的特征，同深度相机得到的三维点云的特征，**利用PointNet++的思想进行多次层、多尺度融合**，得到三维语义信息丰富的特征；
@@ -73,7 +72,7 @@
 
 采用三维扫描仪来获取物体的CAD模型，我们采用的是工业级的高精度三维扫描仪，扫描精度达到0.2mm，足够支撑我们对于位姿预测的研究，下图是我们用扫描仪得到的物体模型（部分）。
 
-![](.\assert\06.png)
+<img src=".\assert\06.png" width="640px" align="center" style="zoom:50%;" />
 
 利用不精确机械臂，来进行半自动化标注，标注流程如下：
 
@@ -87,13 +86,13 @@
 
 手动调整过程展示：
 
-<img src=".\assert\07.png" style="zoom:80%;" />
+<img src=".\assert\07.png" width="640px" align="center" style="zoom:50%;" />
 
 自动计算标注结果展示：
 
-![](.\assert\8.gif)
+<img src="https://github.com/yaomy533/pose_estimation/blob/master/assert/8.gif" />
 
-![](.\assert\9.gif)
+<img src="https://github.com/yaomy533/pose_estimation/blob/master/assert/9.gif" />
 
 ### 3.2 对已有数据集的标注
 
@@ -104,10 +103,10 @@
 目的：获取人手的6D Pose。
 
 + 首先利用OpenPose和MaskRCNN（公有数据集训练出的模型）来对我们的数据预测Mask和关节点（二维关节点），因为这两个都不是在我们数据集上运算的到的结果，所以这两种数据预测的结果存在着一定的误差。我们这个工作的难点如何从这种带误差的标注中获取我们想要的位姿。
-+ 我们采用遗传算法（蒙特卡洛采样）的Coarse优化和梯度下降的精确优化；具体过程可以参考[文档](version/人手数据集优化/实验.md)
++ 我们采用遗传算法（蒙特卡洛采样）的Coarse优化和梯度下降的精确优化；具体过程可以参考[文档]([version/人手数据集优化/实验.md](https://github.com/yaomy533/pose_estimation/blob/master/version/%E4%BA%BA%E6%89%8B%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BC%98%E5%8C%96/%E5%AE%9E%E9%AA%8C.md))
 + 从下图的四个视角可以看到我们对于位姿（旋转和平移）已经比较准确了，之所以会存在误差是因为**人手的建模存在误差**，所以导致看着好像不准确。
 
-![](.\version\人手数据集优化\实验图\方案四\GIF20210925161019.gif)
+[结果](https://github.com/yaomy533/pose_estimation/blob/master/version/%E4%BA%BA%E6%89%8B%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BC%98%E5%8C%96/%E5%AE%9E%E9%AA%8C%E5%9B%BE/%E6%96%B9%E6%A1%88%E5%9B%9B/GIF20210925161019.gif)
 
 
 
