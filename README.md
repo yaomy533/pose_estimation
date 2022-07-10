@@ -43,7 +43,7 @@
 在Cleargrasp数据集上的定量分析，详细结果[点这里](https://github.com/yaomy533/pose_estimation/blob/master/version/transparent/eval_log.txt)，其中heart、square、stemless都是具有轴对称的物体。
 <img src=".\assert\05.png" width="640px" align="center" style="zoom:30%;" />
 
-估计位姿的定性分析：
+部分结果展示：
 
 <img src=".\assert\03.png" width="960px" align="center" style="zoom:50%;" />
 
