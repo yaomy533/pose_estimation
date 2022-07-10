@@ -7,8 +7,8 @@
 
 目前物体三维位姿估计存在着许多的挑战，大部分方法依赖深度数据，但是当面对透明和高反光物体的时候，光学特性的3D传感器难以对齐进行准确的深度估计，因此本研究的重点在于如何解决对于透明和高反光物体以及正常物体的泛华性方法研究。
 
-### 1. 之前研究—透明物体位姿估计
-
+## 1. 之前研究透明物体位姿估计
+### 1.1 透明物体6D Pose预测研究成果
 > Xu C, Chen J, **Yao M,** et al. 6dof pose estimation of transparent object from a single rgb-d image[J]. Sensors, 2020, 20(23): 6790.
 
 面对透明物体存在的反光、低纹理、透明等视觉特性，深度传感器难以对齐进行有效估计。我们这片文章的思路是利用其表面法向量和UV坐标来补齐深度特征，从而实现对透明物体较好的预测。
@@ -20,6 +20,8 @@
 
 <img src=".\assert\01.png" align="center" width="640" style="zoom: 75%;" />
 
+### 1.2 对之前方法的改进
+#### 1.2.1 对之前方法的改进
 针对上面的问题我提出了一个新的模型
 
 <img src=".\assert\02.png" align="center" style="zoom:150%;" />
@@ -29,9 +31,9 @@
 此外对于物体对称带来的旋转多解的情况，我们利用旋转矩阵的特性来对其进行约束。
 
 <img src=".\assert\04.png" width="480px" style="zoom:50%;" />
-
-
-
+#### 1.2.2 代码
+[链接](https://github.com/yaomy533/pose_estimation/tree/master/version/transparent)
+#### 1.2.3 结果分析
 > Sajjan S, Moore M, Pan M, et al. Clear grasp: 3d shape estimation of transparent objects for manipulation[C]//2020 IEEE International Conference on Robotics and Automation (ICRA). IEEE, 2020: 3634-3642.
 
 在Cleargrasp数据集上的定量分析，详细结果[点这里](https://github.com/yaomy533/pose_estimation/blob/master/version/transparent/eval_log.txt)，其中heart、square、stemless都是具有轴对称的物体。
@@ -42,7 +44,27 @@
 <img src=".\assert\03.png" width="960px" align="center" style="zoom:50%;" />
 
 ## 2. 当前正在研究—普通物体的位姿估计
+本仓库所带的代码就是这部分内容，代码结构介绍：
++ dataset: 数据集加载和预处理代码
++ lib
 
+  + network：模型(krrn.py)以及损失函数(loss.py)
+  
+  + transform: 坐标变换工具代码
+  
+  + utils：log，metic等工具代码
+  
++ tool
+
+  + script: 一些处理脚本
+  
+  + viz: jupyter 可视化代码（用于远程可视化调试）
+  
+  + trainer.py: 训练和测试过程封装的类
+  
+  
++ train.py: 主函数 
+  
 <img src=".\assert\10.png" width="640px" align="center" style="zoom:50%;" />
 
 + 鲁棒特征提取：利用多分辨率特征提取网络HRNet来提取彩色特征，逐像素重建物体模型、预测表面法向量、掩码；
