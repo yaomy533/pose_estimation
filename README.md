@@ -28,13 +28,13 @@
 
 此外对于物体对称带来的旋转多解的情况，我们利用旋转矩阵的特性来对其进行约束。
 
-<img src=".\assert\04.png" width="640px" style="zoom:50%;" />
+<img src=".\assert\04.png" width="480px" style="zoom:50%;" />
 
 
 
 > Sajjan S, Moore M, Pan M, et al. Clear grasp: 3d shape estimation of transparent objects for manipulation[C]//2020 IEEE International Conference on Robotics and Automation (ICRA). IEEE, 2020: 3634-3642.
 
-在Cleargrasp数据集中取得了不错的效果，其中heart、square、stemless都是具有轴对称的物体[结果](.\version\transparent\README.md)
+在Cleargrasp数据集上的定量分析，详细结果[点这里](https://github.com/yaomy533/pose_estimation/blob/master/version/transparent/eval_log.txt)，其中heart、square、stemless都是具有轴对称的物体。
 <img src=".\assert\05.png" width="640px" align="center" style="zoom:30%;" />
 
 估计位姿的定性分析：
@@ -81,7 +81,8 @@
 
 利用不精确机械臂，来进行半自动化标注，标注流程如下：
 
-> 因为我们实验室的机械臂好久没有矫正，所以读出来的位姿出现了误差，或者大部分机械臂都有这个误差，因为目前而言还没有用机械臂采集出来的6D Pose数据集，可能用机械臂进行采集本身就有这些误差，从我们实验的结果可以保证机械臂的相对精度，也就是往返能够保证准确，但是如果是读数来算精度就不足以支撑我们的数据采集。
+> 因为我们实验室的机械臂好久没有矫正，所以读出来的位姿出现了误差，或者大部分机械臂都有这个误差，因为目前而言还没有用机械臂采集出来的6D Pose数据集，可能用机械臂进行采集本身就有这些误差。
+> 从我们实验的结果可以保证机械臂的相对精度，也就是往返能够保证准确，但是如果是读数来算精度就不足以支撑我们的数据采集。
 
 + 利用机械臂采集多视角标定板图片（约1000张），根据标定板我们可以得到每张图片的位姿
 + 我们再往返拍一组带实物的图片（约1000张），根据这两组图片计算出其相对位姿。
@@ -109,7 +110,7 @@
 
 + 首先利用OpenPose和MaskRCNN（公有数据集训练出的模型）来对我们的数据预测Mask和关节点（二维关节点），因为这两个都不是在我们数据集上运算的到的结果，所以这两种数据预测的结果存在着一定的误差。我们这个工作的难点如何从这种带误差的标注中获取我们想要的位姿。
 + 我们采用遗传算法（蒙特卡洛采样）的Coarse优化和梯度下降的精确优化；具体过程可以参考[文档]([version/人手数据集优化/实验.md](https://github.com/yaomy533/pose_estimation/blob/master/version/%E4%BA%BA%E6%89%8B%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BC%98%E5%8C%96/%E5%AE%9E%E9%AA%8C.md))
-+ 从下图的四个视角可以看到我们对于位姿（旋转和平移）已经比较准确了，之所以会存在误差是因为**人手的建模存在误差**，所以导致看着好像不准确。[结果](https://github.com/yaomy533/pose_estimation/blob/master/version/%E4%BA%BA%E6%89%8B%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BC%98%E5%8C%96/%E5%AE%9E%E9%AA%8C%E5%9B%BE/%E6%96%B9%E6%A1%88%E5%9B%9B/GIF20210925161019.gif)
++ 从图中的[四个视角](https://github.com/yaomy533/pose_estimation/blob/master/version/%E4%BA%BA%E6%89%8B%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BC%98%E5%8C%96/%E5%AE%9E%E9%AA%8C%E5%9B%BE/%E6%96%B9%E6%A1%88%E5%9B%9B/GIF20210925161019.gif)可以看到我们对于位姿（旋转和平移）已经比较准确了，之所以会存在误差是因为**人手的建模存在误差**，所以导致看着好像不准确。
 
 
 
