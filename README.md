@@ -109,9 +109,7 @@
 
 + 首先利用OpenPose和MaskRCNN（公有数据集训练出的模型）来对我们的数据预测Mask和关节点（二维关节点），因为这两个都不是在我们数据集上运算的到的结果，所以这两种数据预测的结果存在着一定的误差。我们这个工作的难点如何从这种带误差的标注中获取我们想要的位姿。
 + 我们采用遗传算法（蒙特卡洛采样）的Coarse优化和梯度下降的精确优化；具体过程可以参考[文档]([version/人手数据集优化/实验.md](https://github.com/yaomy533/pose_estimation/blob/master/version/%E4%BA%BA%E6%89%8B%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BC%98%E5%8C%96/%E5%AE%9E%E9%AA%8C.md))
-+ 从下图的四个视角可以看到我们对于位姿（旋转和平移）已经比较准确了，之所以会存在误差是因为**人手的建模存在误差**，所以导致看着好像不准确。
-
-[结果](https://github.com/yaomy533/pose_estimation/blob/master/version/%E4%BA%BA%E6%89%8B%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BC%98%E5%8C%96/%E5%AE%9E%E9%AA%8C%E5%9B%BE/%E6%96%B9%E6%A1%88%E5%9B%9B/GIF20210925161019.gif)
++ 从下图的四个视角可以看到我们对于位姿（旋转和平移）已经比较准确了，之所以会存在误差是因为**人手的建模存在误差**，所以导致看着好像不准确。[结果](https://github.com/yaomy533/pose_estimation/blob/master/version/%E4%BA%BA%E6%89%8B%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BC%98%E5%8C%96/%E5%AE%9E%E9%AA%8C%E5%9B%BE/%E6%96%B9%E6%A1%88%E5%9B%9B/GIF20210925161019.gif)
 
 
 
