@@ -106,7 +106,7 @@
 
 采用三维扫描仪来获取物体的CAD模型，我们采用的是工业级的高精度三维扫描仪，扫描精度达到0.2mm，足够支撑我们对于位姿预测的研究，下图是我们用扫描仪得到的物体模型（部分）。
 
-<img src=".\assert\06.png" width="640px" align="center" style="zoom:50%;" />
+<img src=".\assert\06.png" width="480px" align="center" style="zoom:50%;" />
 
 利用不精确机械臂，来进行半自动化标注，标注流程如下：
 
