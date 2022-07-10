@@ -44,6 +44,7 @@
 <img src=".\assert\03.png" width="960px" align="center" style="zoom:50%;" />
 
 ## 2. 当前正在研究—普通物体的位姿估计
+### 2.1 代码结构介绍
 本仓库所带的代码就是这部分内容，代码结构介绍：
 + dataset: 数据集加载和预处理代码
 + lib
@@ -64,7 +65,9 @@
   
   
 + train.py: 主函数 
-  
+
+
+### 2.2 方法介绍
 <img src=".\assert\10.png" width="640px" align="center" style="zoom:50%;" />
 
 + 鲁棒特征提取：利用多分辨率特征提取网络HRNet来提取彩色特征，逐像素重建物体模型、预测表面法向量、掩码；
