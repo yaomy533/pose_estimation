@@ -72,7 +72,7 @@
 
 
 ### 2.2 方法介绍
-<img src=".\assert\10.png" width="640px" align="center" style="zoom:50%;" />
+<img src=".\assert\10.png" width="960px" align="center" style="zoom:50%;" />
 
 + 鲁棒特征提取：利用多分辨率特征提取网络HRNet来提取彩色特征，逐像素重建物体模型、预测表面法向量、掩码；
 + 密集多模态特征融合：将重建出物体模型、表面法向量等从RGB图像中得到的特征，同深度相机得到的三维点云的特征，**利用PointNet++的思想进行多次层、多尺度融合**，得到三维语义信息丰富的特征；
