@@ -1,4 +1,6 @@
-# 本文分成三个部分
+# 引言
+
+本文分成三个部分
 + 之前研究—透明物体位姿估计
 + 当前正在研究—普通物体的位姿估计（简历上所写的部分）
 + 数据集的采集和优化
@@ -31,7 +33,9 @@
 此外对于物体对称带来的旋转多解的情况，我们利用旋转矩阵的特性来对其进行约束。
 
 <img src=".\assert\04.png" width="480px" style="zoom:50%;" />
+
 #### 1.2.2 代码
+
 [链接](https://github.com/yaomy533/pose_estimation/tree/master/version/transparent)
 #### 1.2.3 结果分析
 > Sajjan S, Moore M, Pan M, et al. Clear grasp: 3d shape estimation of transparent objects for manipulation[C]//2020 IEEE International Conference on Robotics and Automation (ICRA). IEEE, 2020: 3634-3642.
