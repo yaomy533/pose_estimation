@@ -83,7 +83,7 @@
 
 同Densefusion对比结果
 
-| 物体 | DenseFusion | OURS（RGB-D, 不带Refine） |
+| 物体 | DenseFusion（迭代优化） | OURS（OneShot） |
 | :--: | :---------: | :-----------------------: |
 |  1   |    92.3     |            85             |
 |  2   |    93.2     |         **98.6**          |
