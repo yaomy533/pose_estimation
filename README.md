@@ -36,7 +36,7 @@
 
 
 
-<img src=".\assert\04.png" width="960px" style="zoom:50%;" />
+<img src=".\assert\04.png" width="750px" style="zoom:50%;" />
 
 #### 1.2.2 结果分析
 在[Cleargrasp](https://sites.google.com/view/cleargrasp)数据集上的定量分析，[详细结果](https://github.com/yaomy533/pose_estimation/blob/master/version/transparent/eval_log.txt)，其中cup、square、stemless都是具有轴对称的物体。
